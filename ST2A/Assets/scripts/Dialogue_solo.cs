@@ -25,7 +25,7 @@ public class Text_Pflanzung : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         speechBubble.gameObject.SetActive(false);
-        StartCoroutine(DelaySpeechBubble(3f));
+        StartCoroutine(DelaySpeechBubble(2f));
         nextSceneButton.gameObject.SetActive(false);
         nextSceneButton.onClick.AddListener(() => LoadScene());
     }
@@ -102,7 +102,7 @@ public class Text_Pflanzung : MonoBehaviour
 
     public IEnumerator NextScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         ShowNextSceneButton();
     }
 
@@ -113,7 +113,7 @@ public class Text_Pflanzung : MonoBehaviour
 
     private void LoadScene()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void SetTypingSpeed(float speed)

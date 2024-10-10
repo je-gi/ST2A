@@ -125,6 +125,6 @@ public class Dialogue_Tomatoes : MonoBehaviour
 
     private void LoadScene()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

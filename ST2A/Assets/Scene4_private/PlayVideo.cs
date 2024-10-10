@@ -119,7 +119,7 @@ public class PlayVideo : MonoBehaviour
 
     private void LoadScene()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void SetTypingSpeed(float speed)
