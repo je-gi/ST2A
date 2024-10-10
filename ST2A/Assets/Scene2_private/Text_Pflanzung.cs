@@ -2,24 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class Text_Pflanzung : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public List<string> anzahlTexte;
+    public List<AudioClip> audioClips;
     public float typingSpeed = 0.05f;
-    public List<int> pauseIndices; // Längere Pause einstellen
-    public float longPauseDuration = 1.0f; // Dauer der langen Pause
-
     public GameObject speechBubble;
+    public Button nextSceneButton;
     private int currentTextIndex = 0;
+    private AudioSource audioSource;
+
 
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private bool skipTyping = false;
     void Start()
     {
-        StartTyping(); // Beginnt den Prozess
+        audioSource = GetComponent<AudioSource>();
+        speechBubble.gameObject.SetActive(false);
+        StartCoroutine(DelaySpeechBubble(3f));
+        nextSceneButton.gameObject.SetActive(false);
+        nextSceneButton.onClick.AddListener(() => LoadScene());
+    }
+
+    private IEnumerator DelaySpeechBubble(float delay)
+    {
+    yield return new WaitForSeconds(delay);
+    speechBubble.SetActive(true);
+    StartTyping();
     }
 
     public void StartTyping()
@@ -34,6 +49,13 @@ public class Text_Pflanzung : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
+
+        if (currentTextIndex < audioClips.Count && audioClips[currentTextIndex] != null)
+        {
+        audioSource.clip = audioClips[currentTextIndex];
+        audioSource.Play();
+        }
+        
         for (int i = 0; i < text.Length; i++)
         {
             if (skipTyping)
@@ -44,14 +66,8 @@ public class Text_Pflanzung : MonoBehaviour
 
             dialogueText.text += text[i];
 
-            if (pauseIndices.Contains(i))
-            {
-                yield return new WaitForSeconds(longPauseDuration);
-            }
-            else
-            {
-                yield return new WaitForSeconds(typingSpeed);
-            }
+            yield return new WaitForSeconds(typingSpeed);
+            
         }
 
         isTyping = false;
@@ -80,7 +96,24 @@ public class Text_Pflanzung : MonoBehaviour
         {
             dialogueText.text = "";
             speechBubble.SetActive(false);
+            StartCoroutine(NextScene());
         }
+    }
+
+    public IEnumerator NextScene()
+    {
+        yield return new WaitForSeconds(3f);
+        ShowNextSceneButton();
+    }
+
+    private void ShowNextSceneButton()
+    {
+        nextSceneButton.gameObject.SetActive(true);
+    }
+
+    private void LoadScene()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void SetTypingSpeed(float speed)
