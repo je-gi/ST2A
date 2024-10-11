@@ -6,24 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/00_StartScene.unity
+    path: Assets/01_Scenes/00_StartScene.unity
     guid: af18511a566da0a4cb31a8a4cbdddeeb
   - enabled: 1
-    path: Assets/Scenes/01MainScene.unity
+    path: Assets/01_Scenes/01MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/02FieldScene.unity
+    path: Assets/01_Scenes/02FieldScene.unity
     guid: 38340752fddfd6e42ba6c3736b47a4b1
   - enabled: 1
-    path: Assets/Scenes/03FirstMiniGame.unity
+    path: Assets/01_Scenes/03FirstMiniGame.unity
     guid: 0434efca468e7a54095aeaebbee6df40
   - enabled: 1
-    path: Assets/Scenes/04BauerVideoScene.unity
+    path: Assets/01_Scenes/04BauerVideoScene.unity
     guid: f05681aee7282544b8ec74986da951eb
   - enabled: 1
-    path: Assets/Scenes/05HarvestScene.unity
+    path: Assets/01_Scenes/05HarvestScene.unity
     guid: a50a1dd19eaf5634dbd9cc7801e6f437
   - enabled: 1
-    path: Assets/Scenes/06SceneCompletion.unity
+    path: Assets/01_Scenes/06SceneCompletion.unity
     guid: db97736b27ad56740a30ed21add32ba9
-  m_configObjects: {}
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 23a8559b6b49aad499b47a4297922a7f, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 2bf5b53a57fb0b24b886cc00a3e8bb54, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d1df3873c4c38c2478990bea0d923941, type: 2}
