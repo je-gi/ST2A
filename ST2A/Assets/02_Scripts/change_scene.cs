@@ -1,12 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Change_scene : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
-    // Diese Methode wechselt zur angegebenen Szene
-    public void WechsleZuSzene(string szenenName)
+    public Button nextSceneButton;  
+
+    private void Start()
     {
-        Debug.Log("Hier käme die neue Szene");
-        SceneManager.LoadScene(szenenName);
+        nextSceneButton.onClick.AddListener(ChangeScene);
+    }
+
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
     }
 }

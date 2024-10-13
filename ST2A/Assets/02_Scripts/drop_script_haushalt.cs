@@ -10,6 +10,10 @@ public class DropZoneObject : MonoBehaviour
     public AudioClip korrektSound; // Der Audioclip für das Feedback
     private AudioSource audioSource; // Referenz zur AudioSource
 
+    // Hinzugefügt für den Hintergrundwechsel
+    public GameObject hintergrundObjekt; // Referenz auf das GameObject mit dem SpriteRenderer
+    public Sprite korrektBackground; // Das neue Sprite, das als Hintergrund verwendet wird
+
     void Start()
     {
         korrektZuordnungen = 0; // Setze den Zähler zu Beginn auf null
@@ -56,11 +60,18 @@ public class DropZoneObject : MonoBehaviour
                     // Drag-and-Drop-Skript vollständig entfernen, um weitere Bewegungen zu verhindern
                     Destroy(draggable);
 
-                    // Visuelle Änderung vornehmen, um anzuzeigen, dass es korrekt platziert wurde
-                    Renderer renderer = other.GetComponent<Renderer>();
-                    if (renderer != null)
+                    // Hintergrund ändern, um anzuzeigen, dass es korrekt platziert wurde
+                    if (hintergrundObjekt != null && korrektBackground != null)
                     {
-                        renderer.material.color = Color.green; // Ändert die Farbe zu Grün
+                        SpriteRenderer spriteRenderer = hintergrundObjekt.GetComponent<SpriteRenderer>();
+                        if (spriteRenderer != null)
+                        {
+                            spriteRenderer.sprite = korrektBackground; // Setze den neuen Hintergrund
+                        }
+                        else
+                        {
+                            Debug.LogError("Hintergrund-Objekt hat keine SpriteRenderer-Komponente!");
+                        }
                     }
 
                     // Rigidbody sperren, um physikalische Bewegungen zu verhindern
@@ -80,9 +91,5 @@ public class DropZoneObject : MonoBehaviour
         }
     }
 
-    // Methode für den Button, um die Szene zu wechseln
-    public void WechsleZurNächstenSzene()
-    {
-        SceneManager.LoadScene("NameDerNeuenSzene");
-    }
+
 }
