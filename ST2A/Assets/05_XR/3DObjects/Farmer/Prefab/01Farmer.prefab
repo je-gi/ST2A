@@ -639,8 +639,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6896121079097042321}
   - {fileID: 7196358888955694887}
@@ -1248,8 +1248,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3412421189536931195}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.044412956, y: -0.014480216, z: -0.010631146, w: 0.9988518}
-  m_LocalPosition: {x: 0.017800493, y: 1.4636297, z: -0.05169493}
+  m_LocalRotation: {x: 9.816574e-10, y: -5.3214905e-10, z: 0.000000008257772, w: 1}
+  m_LocalPosition: {x: -0.0033446625, y: -0.26142263, z: -0.09249288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1422,7 +1422,7 @@ GameObject:
   - component: {fileID: 5561626444129980376}
   - component: {fileID: 2860450154044567676}
   m_Layer: 0
-  m_Name: Farmer
+  m_Name: 01Farmer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

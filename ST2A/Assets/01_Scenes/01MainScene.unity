@@ -579,11 +579,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4690385729449842108, guid: 0a0e307bffb3bc54888dae164f4c0117, type: 3}
       propertyPath: m_Name
-      value: Farmer
+      value: 01Farmer
       objectReference: {fileID: 0}
     - target: {fileID: 4690385729449842108, guid: 0a0e307bffb3bc54888dae164f4c0117, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9022102986639654391, guid: 0a0e307bffb3bc54888dae164f4c0117, type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9022102986639654391, guid: 0a0e307bffb3bc54888dae164f4c0117, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9022102986639654391, guid: 0a0e307bffb3bc54888dae164f4c0117, type: 3}
       propertyPath: m_LocalRotation.w
@@ -625,7 +625,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5229449703879549784, guid: 0a0e307bffb3bc54888dae164f4c0117, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -700,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: 66aee967e42b0d34c96c7cc8eba06842, type: 2}
   m_MaxNumberOfMovingImages: 1
-  m_TrackedImagePrefab: {fileID: 4690385729449842108, guid: 0a0e307bffb3bc54888dae164f4c0117, type: 3}
+  m_TrackedImagePrefab: {fileID: 3366881991057885469, guid: 68f9953f2fd584d41b10ada252502885, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
