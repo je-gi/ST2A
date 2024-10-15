@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/01_Scenes/00_StartScene.unity
     guid: af18511a566da0a4cb31a8a4cbdddeeb
   - enabled: 1
-    path: Assets/01_Scenes/01MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/01_Scenes/02FieldScene.unity
     guid: 38340752fddfd6e42ba6c3736b47a4b1
   - enabled: 1
@@ -26,6 +23,42 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01_Scenes/06SceneCompletion.unity
     guid: db97736b27ad56740a30ed21add32ba9
+  - enabled: 1
+    path: Assets/01_Scenes/08PackageScene 1.unity
+    guid: 97bbbb8830c6f3749b8981504d8dbe6b
+  - enabled: 1
+    path: Assets/01_Scenes/09TruckScene.unity
+    guid: 31ffddec9084f784db7f851eff02d6d7
+  - enabled: 1
+    path: Assets/01_Scenes/10LadenScene.unity
+    guid: 6c55a748565ade94fb65948ab37c7dfb
+  - enabled: 1
+    path: Assets/01_Scenes/11EinkaufswagenScene.unity
+    guid: b68b81fe3fdb97f44a653900dd15d11a
+  - enabled: 1
+    path: Assets/01_Scenes/12AutoScene 1.unity
+    guid: 2f54dac36e317744b93e90d7e944e5f6
+  - enabled: 1
+    path: Assets/01_Scenes/14SceneCompletion.unity
+    guid: e659286ffce6f6f4abec506fd088a31a
+  - enabled: 1
+    path: Assets/01_Scenes/16FridgeScene.unity
+    guid: 3e6e99fb090a8b443a82146f8371d814
+  - enabled: 1
+    path: Assets/01_Scenes/17StoveScene.unity
+    guid: e851dd24ebd1da7439e83a41dc26ff96
+  - enabled: 1
+    path: Assets/01_Scenes/18FridgeScene2.unity
+    guid: fa9e340c733f0c34c81948e5c85d15b0
+  - enabled: 1
+    path: Assets/01_Scenes/19FridgeScene3.unity
+    guid: 80d14b85a32d5ec478bb2b9833a12dbc
+  - enabled: 1
+    path: Assets/01_Scenes/20FieldScene2.unity
+    guid: d942f5732ed825544bab4a97f4ea5679
+  - enabled: 1
+    path: Assets/01_Scenes/21SceneCompletion.unity
+    guid: eb2c3a7d4d0f0cf49aecdd3dd8f8d288
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 23a8559b6b49aad499b47a4297922a7f, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 2bf5b53a57fb0b24b886cc00a3e8bb54, type: 2}

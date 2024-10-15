@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 76}
+  m_AnchoredPosition: {x: 0, y: 72}
   m_SizeDelta: {x: 597.565, y: 291.853}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &433898686
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9624b4ee9e226354a8b0d0ca7d8a8c7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6c211756d96b134dbec516f49eea46f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -774,16 +774,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 433898686}
   anzahlTexte:
-  - "Hallo! Ich bin Tomas. Ich komme aus der sch\xF6nen Ostschweiz."
-  - Ich zeige dir heute meinen Weg. Vom Samen, bis hin zu... naja, du weisst schon...
-  - "Aber schauen wir erstmal zur\xFCck!"
-  - "In der Schweiz wird auf rund 14'000 Hektaren Gem\xFCse angebaut."
-  - "Das meistproduzierte Gem\xFCse ist die Karotte. Doch am meisten gegessen wird
-    die Tomate. Juhui!  "
-  - "Doch ein grosser Anteil von Gem\xFCse, Fr\xFCchten, Fleisch und vielem mehr
-    landet nicht auf dem Teller, sondern im M\xFCll."
-  - "Wie viel weisst du bereits \xFCber dieses Thema, das \"Foodwaste\" genannt wird?
-    Klicke nachher auf \"Weiter\" und finde es heraus."
+  - Oh, hi! Toll, dass du immer noch da bist. Ich bin so gespannt, wie meine Reise
+    weitergeht!
+  - "Weisst du noch, um welchen Anteil die Schweiz bis 2030 die vermeidbaren Lebensmittelabf\xE4lle
+    verringern will?"
+  - "Richtig, es ist die H\xE4lfte!"
+  - "Die Verhinderung von Foodwaste, wie auch andere Massnahmen bei der Ern\xE4hrung,
+    sorgen f\xFCr eine Eind\xE4mmung des Klimawandels."
+  - "Wenn weniger Lebensmittel verschwendet werden, hat dies auch einen Einfluss
+    auf die Biodiversit\xE4t und den Gew\xE4sserschutz, da weniger angebaut werden
+    muss."
+  - Das halbieren der Lebensmittelverluste ist nicht das einzige Klimaziel, das sich
+    die Schweiz gesetzt hat.
+  - Es ist vielmehr eine von vielen Massnahmen, die zur Erreichung von insgesamt
+    17 Zielen beitragen.
+  - "\xDCber den Button oben rechts oder in der Brosch\xFCre findest du weitere Informationen
+    dazu."
+  - Oh, schau mal, wir sind schon an der Kasse! Ich bin mal besser still, sonst wird
+    mir vom vielen Rumtragen noch schlecht.
   audioClips:
   - {fileID: 8300000, guid: 12ffd9c5ed3e7d144a76f93f4a54ddf8, type: 3}
   - {fileID: 8300000, guid: 279dcfbcc4b384b4f9d25eb996ea8ebc, type: 3}
@@ -1113,8 +1121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 297, y: -312}
-  m_SizeDelta: {x: 696.388, y: 696.388}
+  m_AnchoredPosition: {x: 283.3, y: -706}
+  m_SizeDelta: {x: 513.185, y: 566.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059614135
 MonoBehaviour:
@@ -1138,7 +1146,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 85153b8bf192913498228d67490a439a, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
