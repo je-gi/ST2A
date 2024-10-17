@@ -15,6 +15,8 @@ public class Text_Pflanzung : MonoBehaviour
     public GameObject speechBubble;
     public Button nextSceneButton;
     private int currentTextIndex = 0;
+    public GameObject elementToShow;
+    public int numberOfTextsToShowElement;
     private AudioSource audioSource;
 
 
@@ -28,6 +30,9 @@ public class Text_Pflanzung : MonoBehaviour
         StartCoroutine(DelaySpeechBubble(2f));
         nextSceneButton.gameObject.SetActive(false);
         nextSceneButton.onClick.AddListener(() => LoadScene());
+        
+        if (elementToShow != null) //Für Info-Bubble
+        elementToShow.SetActive(false);
     }
 
     private IEnumerator DelaySpeechBubble(float delay)
@@ -73,6 +78,8 @@ public class Text_Pflanzung : MonoBehaviour
         isTyping = false;
         skipTyping = false;
         
+        yield return new WaitForSeconds(0.2f);
+
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         LoadNextText();
     }
@@ -97,6 +104,10 @@ public class Text_Pflanzung : MonoBehaviour
             dialogueText.text = "";
             speechBubble.SetActive(false);
             StartCoroutine(NextScene());
+        }
+        if (currentTextIndex == numberOfTextsToShowElement && elementToShow != null)
+        {
+        elementToShow.SetActive(true);
         }
     }
 

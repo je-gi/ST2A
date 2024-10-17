@@ -75,6 +75,8 @@ public class Dialogue_Tomatoes : MonoBehaviour
         isTyping = false;
         skipTyping = false;
 
+        yield return new WaitForSeconds(0.2f);
+
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         LoadNextText(dialogueText);
     }
