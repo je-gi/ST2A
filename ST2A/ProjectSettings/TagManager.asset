@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Antwort
   - modelObject
+  - Plant
   layers:
   - Default
   - TransparentFX
