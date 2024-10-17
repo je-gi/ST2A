@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: fc232a49503d92640ada9ecbfad31727
+guid: bca9df28719cbdd4eae5af057a84c382
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BodyDetails
-    second: {fileID: 2100000, guid: b103a3406afde334293df7972b407467, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GreensTomato
-    second: {fileID: 2100000, guid: 58d33945c32dfed41ae59b85c2b9f799, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: body
-    second: {fileID: 2100000, guid: d9e4c089b4bea2442af90a14874e317e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: freezer
-    second: {fileID: 2100000, guid: 9e3a11ceb39498143a6a15894dd613b2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: shelf01
-    second: {fileID: 2100000, guid: b5d3b96c004a0cf4486f4413d61612f7, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
