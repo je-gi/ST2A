@@ -4,10 +4,17 @@ using UnityEngine.SceneManagement;
 public class PlantGrowthManager : MonoBehaviour
 {
     public GameObject[] plants;
+    public AudioClip growSound;
+    public AudioClip finalSound;
+    private AudioSource audioSource;
+
     private int currentPlantIndex = 0;
+    private float lastTapTime = 0f;
+    private float doubleTapDelay = 0.3f;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < plants.Length; i++)
         {
             plants[i].SetActive(i == currentPlantIndex);
@@ -16,47 +23,42 @@ public class PlantGrowthManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
+
+            if (touch.phase == TouchPhase.Ended)
             {
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == plants[currentPlantIndex])
                 {
-                    if (hit.transform.CompareTag("Plant"))
+                    if (Time.time - lastTapTime < doubleTapDelay)
                     {
-                        HandleTouch();
+                        GrowPlant();
                     }
+                    lastTapTime = Time.time;
                 }
             }
         }
     }
 
-    private void HandleTouch()
+    private void GrowPlant()
     {
+        plants[currentPlantIndex].SetActive(false);
+
         currentPlantIndex++;
+
         if (currentPlantIndex < plants.Length)
         {
-            plants[currentPlantIndex - 1].SetActive(false);
             plants[currentPlantIndex].SetActive(true);
+            audioSource.PlayOneShot(growSound);
         }
         else
         {
-            PlayFinalSound();
-            LoadNextScene();
+            audioSource.PlayOneShot(finalSound);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-    }
-
-    private void PlayFinalSound()
-    {
-    
-    }
-
-    private void LoadNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
