@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; // Für den Szenenwechsel
+using System.Collections; // Für die Coroutine
 
 public class DropZoneObject : MonoBehaviour
 {
@@ -50,8 +51,8 @@ public class DropZoneObject : MonoBehaviour
                     // Überprüfe, ob alle Elemente korrekt zugeordnet sind
                     if (korrektZuordnungen >= gesamtAnzahl)
                     {
-                        // Blende das Canvas ein, wenn alle zugeordnet sind
-                        erfolgsCanvas.SetActive(true);
+                        // Starte die Coroutine für den verzögerten Wechsel zum Canvas direkt in der if-Schleife
+                        StartCoroutine(VerzögertesEinblenden(2f));
                     }
 
                     // Objekt an die Position des Zielbereichs setzen
@@ -91,5 +92,19 @@ public class DropZoneObject : MonoBehaviour
         }
     }
 
+    // Die Coroutine für den verzögerten Wechsel
+    private IEnumerator VerzögertesEinblenden(float verzögerung)
+    {
+        // Warte für die angegebene Zeit
+        yield return new WaitForSeconds(verzögerung);
 
+        // Blende das ErfolgsCanvas ein
+        erfolgsCanvas.SetActive(true);
+    }
+
+    // Methode für den Button, um die Szene zu wechseln
+    public void WechsleZurNächstenSzene()
+    {
+        SceneManager.LoadScene("NameDerNeuenSzene");
+    }
 }
