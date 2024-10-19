@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bca9df28719cbdd4eae5af057a84c382
+guid: 7bf2dca11077b0e47a36aa5b9dd5c2c7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,33 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BodyDetails
-    second: {fileID: 2100000, guid: fbc16710b0d8da543b7c6fc797eb67ae, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GreensTomato
-    second: {fileID: 2100000, guid: 77f4bf5755e8f9941a90e5fbe57eed85, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PostIt
-    second: {fileID: 2100000, guid: c72a4abd78aa0f44da55e43ba87ade8d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: body
-    second: {fileID: 2100000, guid: c84ddf87b20922443940aecc3b4ac9e2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: freezer
-    second: {fileID: 2100000, guid: 06ddd4fc121d24548acd0d1155d4040d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: shelf01
-    second: {fileID: 2100000, guid: 6989358f1095aaf4eb08d0f075792836, type: 2}
+      name: sausage
+    second: {fileID: 2100000, guid: c721de2d35975d74d9a13350b1b6c04d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
