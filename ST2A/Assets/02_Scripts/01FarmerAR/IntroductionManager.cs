@@ -6,17 +6,11 @@ public class IntroductionManager : MonoBehaviour
     public Canvas infoCanvas;       
     public Button startButton;        
     public AudioSource audioSource;   
-    public string modelTag = "modelObject"; 
-
-    private GameObject modelObject;   
-    private bool prefabIsActive = false; 
 
     void Start()
     {
-        
         infoCanvas.gameObject.SetActive(true);
 
-        
         if (startButton != null)
         {
             startButton.onClick.AddListener(OnStartButtonClick);
@@ -32,22 +26,6 @@ public class IntroductionManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-      
-        modelObject = GameObject.FindWithTag(modelTag);
-
-      
-        if (IsPrefabActive() && !prefabIsActive)
-        {
-            prefabIsActive = true;
-        }
-        else if (!IsPrefabActive() && prefabIsActive)
-        {
-            prefabIsActive = false;
-        }
-    }
-
     void OnStartButtonClick()
     {
         if (audioSource != null)
@@ -55,17 +33,11 @@ public class IntroductionManager : MonoBehaviour
             audioSource.Play();
         }
 
-
         Invoke("HideCanvas", 0.1f); 
     }
 
     void HideCanvas()
     {
         infoCanvas.gameObject.SetActive(false);
-    }
-
-    bool IsPrefabActive()
-    {
-        return modelObject != null && modelObject.activeInHierarchy;
     }
 }
