@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Antwort
+  - modelObject
+  - Plant
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ButtonLayer
   - Water
   - UI
   - 

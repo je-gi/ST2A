@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 17b9144d87428784baff0e2ce6558188
+guid: 2f4347dad8a981b4eb0dad2212a2c578
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hat
+    second: {fileID: 2100000, guid: b680b4ceb8701614c8079ada90a8b2f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HatSpikes
+    second: {fileID: 2100000, guid: fa9d1754528b69b48a4f8a0738c56209, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -14,11 +24,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: eyes
     second: {fileID: 2100000, guid: 5171487b948299a48897aff19d636e99, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: hat
-    second: {fileID: 2100000, guid: b680b4ceb8701614c8079ada90a8b2f2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -34,6 +39,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: skin
     second: {fileID: 2100000, guid: db9939ad1d6545c4d96de3eadbd8ee1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tomato
+    second: {fileID: 2100000, guid: cabd3c1ce3944b049a0b0494057f34bc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
