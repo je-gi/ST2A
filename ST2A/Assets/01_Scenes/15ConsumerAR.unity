@@ -1515,9 +1515,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SerializedLibrary: {fileID: 11400000, guid: 02633ee37a8ba8e4091e9965860ff74a, type: 2}
+  m_SerializedLibrary: {fileID: 11400000, guid: 12d3fcbf4fcd0ba4c9a2b9b25471d465, type: 2}
   m_MaxNumberOfMovingImages: 1
-  m_TrackedImagePrefab: {fileID: 7002299735676569450, guid: 0d5f87d3a335a4a42b908ee8f7f0fe82, type: 3}
+  m_TrackedImagePrefab: {fileID: 725658543081024331, guid: 392f756c0c7de334393cca0b74175a4b, type: 3}
 --- !u!1001 &1692432456
 PrefabInstance:
   m_ObjectHideFlags: 0

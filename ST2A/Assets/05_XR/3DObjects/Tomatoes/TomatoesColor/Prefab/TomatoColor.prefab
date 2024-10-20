@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1909476742988441105}
   - component: {fileID: 3301148896435972532}
   - component: {fileID: 735492085589597566}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TomatoColor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
