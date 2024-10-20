@@ -5567,7 +5567,7 @@ MonoBehaviour:
   filledBox1: {fileID: 9049856544781513221}
   emptyBox2: {fileID: 4145788182726505206}
   filledBox2: {fileID: 1081672544196272497}
-  boxChangeSound: {fileID: 8300000, guid: 1d4658f3f8d7a8c4ab2a48d2891891c6, type: 3}
+  boxChangeSound: {fileID: 8300000, guid: 08eadee2729a64e45b654c2e08ca6b5e, type: 3}
 --- !u!82 &3658689774935394200
 AudioSource:
   m_ObjectHideFlags: 0

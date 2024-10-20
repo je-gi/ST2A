@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
@@ -13,13 +14,13 @@ public class PlantGrowthManager : MonoBehaviour
     private float lastTapTime = 0f;
     private float doubleTapDelay = 0.3f;
 
-    private ARSessionResetter arSessionResetter;
+    private ARSceneSwitcher arSceneSwitcher;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        arSessionResetter = FindObjectOfType<ARSessionResetter>();
-        
+        arSceneSwitcher = FindObjectOfType<ARSceneSwitcher>();
+
         for (int i = 0; i < plants.Length; i++)
         {
             plants[i].SetActive(i == currentPlantIndex);
@@ -50,20 +51,33 @@ public class PlantGrowthManager : MonoBehaviour
     }
 
     private void GrowPlant()
-{
-    plants[currentPlantIndex].SetActive(false);
-
-    currentPlantIndex++;
-
-    if (currentPlantIndex < plants.Length)
     {
-        plants[currentPlantIndex].SetActive(true);
-        audioSource.PlayOneShot(growSound);
+        plants[currentPlantIndex].SetActive(false);
+        currentPlantIndex++;
+
+        if (currentPlantIndex < plants.Length)
+        {
+            plants[currentPlantIndex].SetActive(true);
+            audioSource.PlayOneShot(growSound);
+        }
+        else
+        {
+            audioSource.PlayOneShot(finalSound);
+            StartCoroutine(LoadNextScene());
+        }
     }
-    else
+
+    private IEnumerator LoadNextScene()
     {
-        audioSource.PlayOneShot(finalSound);
-        FindObjectOfType<ARSceneSwitcher>().SwitchToNextScene();
+        yield return new WaitForSeconds(3f); 
+
+        if (arSceneSwitcher != null)
+        {
+            arSceneSwitcher.SwitchToNextScene();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
-}
 }

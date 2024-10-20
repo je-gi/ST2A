@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TomatoDropper : MonoBehaviour
 {
@@ -10,16 +9,21 @@ public class TomatoDropper : MonoBehaviour
     public GameObject filledBox2;
     public AudioClip boxChangeSound;
     private AudioSource audioSource;
-
     private float lastTapTime = 0f;
     private float doubleTapDelay = 0.3f;
     private int currentToggle = 0;
+
+    
+    private ARSceneSwitcher arSceneSwitcher;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         filledBox1.SetActive(false);
         filledBox2.SetActive(false);
+
+       
+        arSceneSwitcher = FindObjectOfType<ARSceneSwitcher>();
     }
 
     private void Update()
@@ -69,6 +73,16 @@ public class TomatoDropper : MonoBehaviour
     private IEnumerator LoadNextSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+       
+        if (arSceneSwitcher != null)
+        {
+            arSceneSwitcher.SwitchToNextScene();
+        }
+        else
+        {
+            
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

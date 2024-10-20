@@ -18,15 +18,13 @@ public class ARSceneSwitcher : MonoBehaviour
 
     private IEnumerator ResetARSessionAndLoadNextScene()
     {
+  
         if (arSessionResetter != null)
         {
             arSessionResetter.ResetARSession();
         }
-        else
-        {
-            Debug.LogWarning("ARSessionResetter not found!");
-        }
 
+        
         yield return new WaitForSeconds(1f); 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

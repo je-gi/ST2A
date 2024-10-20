@@ -8,8 +8,8 @@ public class FillingRefrigerator : MonoBehaviour
     public GameObject[] colorfulModels;
     public AudioClip switchSound;
     private AudioSource audioSource;
+    private ARSceneSwitcher arSceneSwitcher;
 
-    private int currentModelIndex = 0;
     private float lastTapTime = 0f;
     private float doubleTapDelay = 0.3f;
 
@@ -18,18 +18,10 @@ public class FillingRefrigerator : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < grayModels.Length; i++)
         {
-
-            if (i == currentModelIndex)
-            {
-                grayModels[i].SetActive(true);
-                colorfulModels[i].SetActive(false);
-            }
-            else
-            {
-                grayModels[i].SetActive(true); 
-                colorfulModels[i].SetActive(false); 
-            }
+            grayModels[i].SetActive(true);
+            colorfulModels[i].SetActive(false);
         }
+        arSceneSwitcher = FindObjectOfType<ARSceneSwitcher>();
     }
 
     private void Update()
@@ -43,33 +35,47 @@ public class FillingRefrigerator : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.layer == LayerMask.NameToLayer("ButtonLayer"))
+                if (Physics.Raycast(ray, out hit))
                 {
-                    if (Time.time - lastTapTime < doubleTapDelay)
+                    for (int i = 0; i < grayModels.Length; i++)
                     {
-                        SwitchModel();
+                        if (hit.collider.gameObject == grayModels[i])
+                        {
+                            if (Time.time - lastTapTime < doubleTapDelay)
+                            {
+                                SwitchModel(i);
+                            }
+                            lastTapTime = Time.time;
+                        }
                     }
-                    lastTapTime = Time.time;
                 }
             }
         }
     }
 
-    private void SwitchModel()
+    private void SwitchModel(int index)
     {
-        if (currentModelIndex < grayModels.Length)
+        if (index < grayModels.Length)
         {
-            grayModels[currentModelIndex].SetActive(false);
-            colorfulModels[currentModelIndex].SetActive(true);
+            grayModels[index].SetActive(false);
+            colorfulModels[index].SetActive(true);
 
             if (audioSource != null && switchSound != null)
             {
                 audioSource.PlayOneShot(switchSound);
             }
 
-            currentModelIndex++;
+            bool allModelsSwitched = true;
+            for (int i = 0; i < grayModels.Length; i++)
+            {
+                if (grayModels[i].activeSelf)
+                {
+                    allModelsSwitched = false;
+                    break;
+                }
+            }
 
-            if (currentModelIndex >= grayModels.Length)
+            if (allModelsSwitched)
             {
                 StartCoroutine(LoadNextSceneAfterDelay(5f));
             }
@@ -79,6 +85,14 @@ public class FillingRefrigerator : MonoBehaviour
     private IEnumerator LoadNextSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if (arSceneSwitcher != null)
+        {
+            arSceneSwitcher.SwitchToNextScene();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
