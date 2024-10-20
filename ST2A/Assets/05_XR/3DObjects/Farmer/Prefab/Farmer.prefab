@@ -949,7 +949,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Doppeltippe auf die Pflanze, um sie wachsen zu lassen.
+  m_text: "Hilf dem Bauer eine Tomate wachsen zu lassen. Doppeltippe daf\xFCr auf
+    die Pflanze."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2120,6 +2121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4377614248373880296}
+  - component: {fileID: 3930296411339204698}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: modelObject
@@ -2177,6 +2179,18 @@ Transform:
   - {fileID: 92963403175470389}
   m_Father: {fileID: 9021367929497904315}
   m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+--- !u!114 &3930296411339204698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416073224526974683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13175a336da7ac4f9977b292d0f1dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4648308735457569334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,7 +3940,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9021367929497904315}
   - component: {fileID: 2986609907110836034}
-  - component: {fileID: 8392881974249890972}
   - component: {fileID: 2398843685851212076}
   - component: {fileID: 5630707129601125598}
   m_Layer: 0
@@ -4048,18 +4061,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8392881974249890972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216175925047961065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13175a336da7ac4f9977b292d0f1dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &2398843685851212076
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4524,7 +4525,8 @@ PrefabInstance:
       value: Plant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5427469986095746287, guid: bb41d64775476dd4392eac3004bdb647, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb41d64775476dd4392eac3004bdb647, type: 3}
@@ -4603,7 +4605,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -3567527827353614344, guid: 9354a2fff3b60d74a8285ed2dc3db22b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9354a2fff3b60d74a8285ed2dc3db22b, type: 3}

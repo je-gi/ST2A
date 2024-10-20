@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.ARFoundation;
 
 public class PlantGrowthManager : MonoBehaviour
 {
@@ -12,9 +14,13 @@ public class PlantGrowthManager : MonoBehaviour
     private float lastTapTime = 0f;
     private float doubleTapDelay = 0.3f;
 
+    private ARSceneSwitcher arSceneSwitcher;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        arSceneSwitcher = FindObjectOfType<ARSceneSwitcher>();
+
         for (int i = 0; i < plants.Length; i++)
         {
             plants[i].SetActive(i == currentPlantIndex);
@@ -47,7 +53,6 @@ public class PlantGrowthManager : MonoBehaviour
     private void GrowPlant()
     {
         plants[currentPlantIndex].SetActive(false);
-
         currentPlantIndex++;
 
         if (currentPlantIndex < plants.Length)
@@ -58,6 +63,20 @@ public class PlantGrowthManager : MonoBehaviour
         else
         {
             audioSource.PlayOneShot(finalSound);
+            StartCoroutine(LoadNextScene());
+        }
+    }
+
+    private IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(3f); 
+
+        if (arSceneSwitcher != null)
+        {
+            arSceneSwitcher.SwitchToNextScene();
+        }
+        else
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

@@ -31,9 +31,13 @@ public class IntroductionManager : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play();
+            Invoke("HideCanvas", audioSource.clip.length);
         }
-
-        Invoke("HideCanvas", 0.1f); 
+        else
+        {
+          
+            HideCanvas();
+        }
     }
 
     void HideCanvas()

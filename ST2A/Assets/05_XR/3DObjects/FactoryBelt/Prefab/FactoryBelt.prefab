@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5162323528773804565}
+  - component: {fileID: 5406249837788124822}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: modelObject
@@ -26,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.70710677, z: 0.70710677, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.049886998, y: 0.049886998, z: 0.049886998}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2252761263007159034}
@@ -119,6 +120,18 @@ Transform:
   - {fileID: 6173838968880336599}
   m_Father: {fileID: 29491887805039362}
   m_LocalEulerAnglesHint: {x: -90, y: 270, z: -90}
+--- !u!114 &5406249837788124822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210016194187255718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13175a336da7ac4f9977b292d0f1dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368918901229394866
 GameObject:
   m_ObjectHideFlags: 0
@@ -5567,7 +5580,7 @@ MonoBehaviour:
   filledBox1: {fileID: 9049856544781513221}
   emptyBox2: {fileID: 4145788182726505206}
   filledBox2: {fileID: 1081672544196272497}
-  boxChangeSound: {fileID: 8300000, guid: 1d4658f3f8d7a8c4ab2a48d2891891c6, type: 3}
+  boxChangeSound: {fileID: 8300000, guid: 08eadee2729a64e45b654c2e08ca6b5e, type: 3}
 --- !u!82 &3658689774935394200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6006,7 +6019,6 @@ GameObject:
   m_Component:
   - component: {fileID: 29491887805039362}
   - component: {fileID: 3273956677981536315}
-  - component: {fileID: 6987440045017591679}
   - component: {fileID: 8355914644330540301}
   m_Layer: 0
   m_Name: FactoryBelt
@@ -6127,18 +6139,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6987440045017591679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7002299735676569450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13175a336da7ac4f9977b292d0f1dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &8355914644330540301
 MeshCollider:
   m_ObjectHideFlags: 0

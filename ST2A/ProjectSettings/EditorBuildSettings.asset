@@ -48,6 +48,9 @@ EditorBuildSettings:
     path: Assets/01_Scenes/14SceneCompletion.unity
     guid: e659286ffce6f6f4abec506fd088a31a
   - enabled: 1
+    path: Assets/01_Scenes/15ConsumerAR.unity
+    guid: ecfb3fb430b52894c999ccbb0b1b789a
+  - enabled: 1
     path: Assets/01_Scenes/16FridgeScene.unity
     guid: 3e6e99fb090a8b443a82146f8371d814
   - enabled: 1

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1502380125871738768}
   - component: {fileID: 2555332466793381941}
   - component: {fileID: 329512773210797311}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CheeseColor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
