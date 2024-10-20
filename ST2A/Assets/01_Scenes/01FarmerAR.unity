@@ -703,7 +703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -1168,7 +1168,6 @@ MonoBehaviour:
   infoCanvas: {fileID: 703677948}
   startButton: {fileID: 748910562}
   audioSource: {fileID: 748910565}
-  modelTag: modelObject
 --- !u!4 &932533114
 Transform:
   m_ObjectHideFlags: 0
