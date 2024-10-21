@@ -5,41 +5,50 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class Text_Pflanzung : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public List<string> anzahlTexte;
     public List<AudioClip> audioClips;
+    public AudioClip buttonAudioClip;
     public float typingSpeed = 0.05f;
     public GameObject speechBubble;
     public Button nextSceneButton;
     private int currentTextIndex = 0;
     public GameObject elementToShow;
     public int numberOfTextsToShowElement;
-    private AudioSource audioSource;
-
 
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private bool skipTyping = false;
+    private AudioSource audioSource;
+
+    private Vector3 originalScale;
+    private Color originalColor;
+    private float pulseDuration = 0.2f;
+    private float scaleFactor = 0.9f;
+    private Color pressedColor = new Color(0.8f, 0.8f, 0.8f);
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        speechBubble.gameObject.SetActive(false);
+        speechBubble.SetActive(false);
         StartCoroutine(DelaySpeechBubble(2f));
         nextSceneButton.gameObject.SetActive(false);
-        nextSceneButton.onClick.AddListener(() => LoadScene());
-        
-        if (elementToShow != null) //Für Info-Bubble
-        elementToShow.SetActive(false);
+        nextSceneButton.onClick.AddListener(OnNextSceneButtonClick);
+
+        originalScale = nextSceneButton.transform.localScale;
+        originalColor = nextSceneButton.GetComponent<Image>().color;
+
+        if (elementToShow != null)
+            elementToShow.SetActive(false);
     }
 
     private IEnumerator DelaySpeechBubble(float delay)
     {
-    yield return new WaitForSeconds(delay);
-    speechBubble.SetActive(true);
-    StartTyping();
+        yield return new WaitForSeconds(delay);
+        speechBubble.SetActive(true);
+        StartTyping();
     }
 
     public void StartTyping()
@@ -55,12 +64,14 @@ public class Text_Pflanzung : MonoBehaviour
         isTyping = true;
         dialogueText.text = "";
 
-        if (currentTextIndex < audioClips.Count && audioClips[currentTextIndex] != null)
+        if (currentTextIndex < audioClips.Count && audioClips[currentTextIndex] != null && audioSource != null)
         {
-        audioSource.clip = audioClips[currentTextIndex];
-        audioSource.Play();
+            audioSource.clip = audioClips[currentTextIndex];
+            audioSource.Play();
+
+            yield return new WaitForSeconds(audioSource.clip.length);
         }
-        
+
         for (int i = 0; i < text.Length; i++)
         {
             if (skipTyping)
@@ -70,16 +81,13 @@ public class Text_Pflanzung : MonoBehaviour
             }
 
             dialogueText.text += text[i];
-
             yield return new WaitForSeconds(typingSpeed);
-            
         }
 
         isTyping = false;
         skipTyping = false;
-        
-        yield return new WaitForSeconds(0.2f);
 
+        yield return new WaitForSeconds(0.2f);
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         LoadNextText();
     }
@@ -107,7 +115,7 @@ public class Text_Pflanzung : MonoBehaviour
         }
         if (currentTextIndex == numberOfTextsToShowElement && elementToShow != null)
         {
-        elementToShow.SetActive(true);
+            elementToShow.SetActive(true);
         }
     }
 
@@ -122,8 +130,38 @@ public class Text_Pflanzung : MonoBehaviour
         nextSceneButton.gameObject.SetActive(true);
     }
 
-    private void LoadScene()
+    private void OnNextSceneButtonClick()
     {
+        StartCoroutine(ButtonPressAnimation());
+
+        if (buttonAudioClip != null && audioSource != null)
+        {
+            audioSource.clip = buttonAudioClip;
+            audioSource.Play();
+            StartCoroutine(WaitForSoundAndLoadScene());
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    private IEnumerator ButtonPressAnimation()
+    {
+        Image buttonImage = nextSceneButton.GetComponent<Image>();
+        buttonImage.color = pressedColor;
+
+        nextSceneButton.transform.localScale = originalScale * scaleFactor;
+
+        yield return new WaitForSeconds(pulseDuration);
+
+        buttonImage.color = originalColor;
+        nextSceneButton.transform.localScale = originalScale;
+    }
+
+    private IEnumerator WaitForSoundAndLoadScene()
+    {
+        yield return new WaitForSeconds(audioSource.clip.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

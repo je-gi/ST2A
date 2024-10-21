@@ -1229,6 +1229,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  buttonAudioClip: {fileID: 8300000, guid: 08eadee2729a64e45b654c2e08ca6b5e, type: 3}
   typingSpeed: 0.03
   speechBubble1: {fileID: 2119785999}
   speechBubble2: {fileID: 182409213}

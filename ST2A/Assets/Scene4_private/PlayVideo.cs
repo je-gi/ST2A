@@ -14,28 +14,40 @@ public class PlayVideo : MonoBehaviour
     public float typingSpeed = 0.05f;
     public GameObject speechBubble;
     public Button nextSceneButton;
-    private int currentTextIndex = 0;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public VideoPlayer videoPlayer;
 
-
+    private Vector3 originalScale;
+    private Color originalColor;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private bool skipTyping = false;
+
+    private float pulseDuration = 0.2f;
+    private float scaleFactor = 0.9f;
+    private Color pressedColor = new Color(0.8f, 0.8f, 0.8f);
+
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        speechBubble.gameObject.SetActive(false);
+        speechBubble.SetActive(false);
         StartCoroutine(DelaySpeechBubble(0.5f));
         nextSceneButton.gameObject.SetActive(false);
-        nextSceneButton.onClick.AddListener(() => LoadScene());
+        nextSceneButton.onClick.AddListener(OnNextSceneButtonClick);
+
+        originalScale = nextSceneButton.transform.localScale;
+        originalColor = nextSceneButton.GetComponent<Image>().color;
+
+        if (videoPlayer != null)
+        {
+            videoPlayer.loopPointReached += VideoEnded;
+        }
     }
 
     private IEnumerator DelaySpeechBubble(float delay)
     {
-    yield return new WaitForSeconds(delay);
-    speechBubble.SetActive(true);
-    StartTyping();
+        yield return new WaitForSeconds(delay);
+        speechBubble.SetActive(true);
+        StartTyping();
     }
 
     public void StartTyping()
@@ -43,7 +55,7 @@ public class PlayVideo : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(TypeText(anzahlTexte[currentTextIndex]));
+        typingCoroutine = StartCoroutine(TypeText(anzahlTexte[0]));
     }
 
     private IEnumerator TypeText(string text)
@@ -51,12 +63,12 @@ public class PlayVideo : MonoBehaviour
         isTyping = true;
         dialogueText.text = "";
 
-        if (currentTextIndex < audioClips.Count && audioClips[currentTextIndex] != null)
+        if (audioClips.Count > 0)
         {
-        audioSource.clip = audioClips[currentTextIndex];
-        audioSource.Play();
+            audioSource.clip = audioClips[0];
+            audioSource.Play();
         }
-        
+
         for (int i = 0; i < text.Length; i++)
         {
             if (skipTyping)
@@ -66,14 +78,12 @@ public class PlayVideo : MonoBehaviour
             }
 
             dialogueText.text += text[i];
-
             yield return new WaitForSeconds(typingSpeed);
-            
         }
 
         isTyping = false;
         skipTyping = false;
-        
+
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         LoadNextText();
     }
@@ -84,31 +94,34 @@ public class PlayVideo : MonoBehaviour
         {
             skipTyping = true;
         }
+
+        if (videoPlayer.isPlaying && Input.GetMouseButtonDown(0))
+        {
+            videoPlayer.Stop();
+            ShowNextSceneButton();
+        }
     }
 
     public void LoadNextText()
     {
-        currentTextIndex++;
-        if (currentTextIndex < anzahlTexte.Count)
+        if (anzahlTexte.Count > 1)
         {
+            anzahlTexte.RemoveAt(0);
             StartTyping();
         }
         else
         {
             dialogueText.text = "";
             speechBubble.SetActive(false);
-            StartCoroutine(NextScene());
-
             if (videoPlayer != null)
-        {
-            videoPlayer.Play();
-        }
+            {
+                videoPlayer.Play();
+            }
         }
     }
 
-    public IEnumerator NextScene()
+    private void VideoEnded(VideoPlayer vp)
     {
-        yield return new WaitForSeconds(21f); //Hier die Länge des Videos einfügen
         ShowNextSceneButton();
     }
 
@@ -117,8 +130,37 @@ public class PlayVideo : MonoBehaviour
         nextSceneButton.gameObject.SetActive(true);
     }
 
-    private void LoadScene()
+    private void OnNextSceneButtonClick()
     {
+        StartCoroutine(ButtonPressAnimation());
+
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.Play();
+            StartCoroutine(WaitForSoundAndLoadScene());
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    private IEnumerator ButtonPressAnimation()
+    {
+        Image buttonImage = nextSceneButton.GetComponent<Image>();
+        buttonImage.color = pressedColor;
+
+        nextSceneButton.transform.localScale = originalScale * scaleFactor;
+
+        yield return new WaitForSeconds(pulseDuration);
+
+        buttonImage.color = originalColor;
+        nextSceneButton.transform.localScale = originalScale;
+    }
+
+    private IEnumerator WaitForSoundAndLoadScene()
+    {
+        yield return new WaitForSeconds(audioSource.clip.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

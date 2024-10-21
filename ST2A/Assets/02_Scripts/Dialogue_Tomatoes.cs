@@ -11,25 +11,34 @@ public class Dialogue_Tomatoes : MonoBehaviour
     public TextMeshProUGUI dialogueText2; // Für Sprecher 2
     public List<string> anzahlTexte;
     public List<AudioClip> audioClips;
+    public AudioClip buttonAudioClip; 
     public float typingSpeed = 0.05f;
     public GameObject speechBubble1; // Sprechblase 1
     public GameObject speechBubble2; // Sprechblase 2
     public Button nextSceneButton;
-    
+
     private int currentTextIndex = 0;
     private AudioSource audioSource;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private bool skipTyping = false;
 
-    // Start is called before the first frame update
+    private Vector3 originalScale;
+    private Color originalColor;
+    private float pulseDuration = 0.2f;
+    private float scaleFactor = 0.9f;
+    private Color pressedColor = new Color(0.8f, 0.8f, 0.8f);
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         speechBubble1.SetActive(false);
         speechBubble2.SetActive(false);
         nextSceneButton.gameObject.SetActive(false);
-        nextSceneButton.onClick.AddListener(() => LoadScene());
+        nextSceneButton.onClick.AddListener(OnNextSceneButtonClick);
+
+        originalScale = nextSceneButton.transform.localScale;
+        originalColor = nextSceneButton.GetComponent<Image>().color;
 
         StartCoroutine(DelaySpeechBubble(2f, speechBubble1, dialogueText1));
     }
@@ -123,6 +132,41 @@ public class Dialogue_Tomatoes : MonoBehaviour
     private void ShowNextSceneButton()
     {
         nextSceneButton.gameObject.SetActive(true);
+    }
+
+    private void OnNextSceneButtonClick()
+    {
+        StartCoroutine(ButtonPressAnimation());
+
+        if (buttonAudioClip != null && audioSource != null)
+        {
+            audioSource.clip = buttonAudioClip;
+            audioSource.Play();
+            StartCoroutine(WaitForSoundAndLoadScene());
+        }
+        else
+        {
+            LoadScene();
+        }
+    }
+
+    private IEnumerator WaitForSoundAndLoadScene()
+    {
+        yield return new WaitForSeconds(buttonAudioClip.length);
+        LoadScene();
+    }
+
+    private IEnumerator ButtonPressAnimation()
+    {
+        Image buttonImage = nextSceneButton.GetComponent<Image>();
+        buttonImage.color = pressedColor;
+
+        nextSceneButton.transform.localScale = originalScale * scaleFactor;
+
+        yield return new WaitForSeconds(pulseDuration);
+
+        buttonImage.color = originalColor;
+        nextSceneButton.transform.localScale = originalScale;
     }
 
     private void LoadScene()
