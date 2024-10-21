@@ -2,28 +2,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecipeChecker : MonoBehaviour
+public class RecipeCheckManager : MonoBehaviour
 {
     public Text feedbackText;  // UI-Text für das Feedback
 
     void Start()
     {
-        // InventoryManager suchen, der die Kühlschrank- und Einkaufswagen-Daten enthält
-        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+        // FridgeController und ShoppingCart suchen
+        FridgeController fridgeController = FindObjectOfType<FridgeController>();
+        ShoppingCart shoppingCart = FindObjectOfType<ShoppingCart>();
 
-        if (inventoryManager != null)
+        if (fridgeController != null && shoppingCart != null)
         {
-            Debug.Log("InventoryManager gefunden!");
-
-            // Debugging: Inhalte des Kühlschranks und Einkaufswagens ausgeben
+            // Debugging: Ausgabe der Inhalte von Kühlschrank und Einkaufswagen
             Debug.Log("Kühlschrank-Inhalt:");
-            foreach (var item in inventoryManager.fridgeItems)
+            foreach (var item in fridgeController.fridgeInventory)
             {
                 Debug.Log(item.Key + ": " + item.Value);
             }
 
             Debug.Log("Einkaufswagen-Inhalt:");
-            foreach (var item in inventoryManager.cartItems)
+            foreach (var item in shoppingCart.cartItems)
             {
                 Debug.Log(item.Key + ": " + item.Value);
             }
@@ -35,7 +34,7 @@ public class RecipeChecker : MonoBehaviour
                 { "Zwiebel", 0.5f },
                 { "Butter", 1 },
                 { "Reis", 150 },
-                { "Tomatenpüree", 3 },
+                { "Tomatenpüree", 3 },  // Achte darauf, dass der Schlüssel hier mit fridgeInventory übereinstimmt
                 { "Bouillon", 4 },
                 { "Käse", 3 },
                 { "Tomaten", 2 }
@@ -52,15 +51,15 @@ public class RecipeChecker : MonoBehaviour
                 int availableAmount = 0;
 
                 // Überprüfen, was im Kühlschrank vorhanden ist
-                if (inventoryManager.fridgeItems.ContainsKey(itemName))
+                if (fridgeController.fridgeInventory.ContainsKey(itemName))
                 {
-                    availableAmount += inventoryManager.fridgeItems[itemName];
+                    availableAmount += fridgeController.fridgeInventory[itemName];
                 }
 
                 // Überprüfen, was im Einkaufswagen ist
-                if (inventoryManager.cartItems.ContainsKey(itemName))
+                if (shoppingCart.cartItems.ContainsKey(itemName))
                 {
-                    availableAmount += inventoryManager.cartItems[itemName];
+                    availableAmount += shoppingCart.cartItems[itemName];
                 }
 
                 // Feedback basierend auf der Menge
@@ -83,7 +82,7 @@ public class RecipeChecker : MonoBehaviour
         }
         else
         {
-            Debug.LogError("InventoryManager nicht gefunden!");
+            Debug.LogError("FridgeController oder ShoppingCart nicht gefunden!");
         }
     }
 }
