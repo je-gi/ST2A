@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class IntroductionManager : MonoBehaviour
 {
@@ -7,17 +8,23 @@ public class IntroductionManager : MonoBehaviour
     public Button startButton;        
     public AudioSource audioSource;   
 
+    private Vector3 originalScale;     
+    private Color originalColor;       
+
+    private float pulseDuration = 0.2f; 
+    private float scaleFactor = 0.9f;    
+    private Color pressedColor = new Color(0.8f, 0.8f, 0.8f); 
+
     void Start()
     {
         infoCanvas.gameObject.SetActive(true);
 
         if (startButton != null)
         {
+            originalScale = startButton.transform.localScale; 
+            originalColor = startButton.GetComponent<Image>().color;
+
             startButton.onClick.AddListener(OnStartButtonClick);
-        }
-        else
-        {
-            Debug.LogError("Start Button ist nicht zugewiesen!");
         }
 
         if (audioSource == null)
@@ -28,6 +35,8 @@ public class IntroductionManager : MonoBehaviour
 
     void OnStartButtonClick()
     {
+        StartCoroutine(ButtonPressAnimation());
+
         if (audioSource != null)
         {
             audioSource.Play();
@@ -35,9 +44,21 @@ public class IntroductionManager : MonoBehaviour
         }
         else
         {
-          
             HideCanvas();
         }
+    }
+
+    IEnumerator ButtonPressAnimation()
+    {
+        Image buttonImage = startButton.GetComponent<Image>();
+        buttonImage.color = pressedColor;
+
+        startButton.transform.localScale = originalScale * scaleFactor;
+
+        yield return new WaitForSeconds(pulseDuration);
+
+        buttonImage.color = originalColor;
+        startButton.transform.localScale = originalScale;
     }
 
     void HideCanvas()

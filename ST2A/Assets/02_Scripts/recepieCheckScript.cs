@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecipeChecker : MonoBehaviour
+public class RecipeCheckManager : MonoBehaviour  // Geänderter Klassennamen, um Konflikte zu vermeiden
 {
     public Text feedbackText;  // UI-Text für das Feedback
 

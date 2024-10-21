@@ -48,7 +48,7 @@ public class ObjectInteraction : MonoBehaviour
 
                 float newRotationY = currentRotation.y - deltaX * rotationSpeed;
 
-                transform.eulerAngles = new Vector3(currentRotation.x, newRotationY, currentRotation.z);
+                transform.localEulerAngles = new Vector3(currentRotation.x, newRotationY, currentRotation.z);
 
                 initialRotationFingerPosX = touch.position.x;
             }
