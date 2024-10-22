@@ -6,9 +6,15 @@ public class ObjectInteraction : MonoBehaviour
 {
     private float initialDistance;
     private Vector3 initialScale;
-
     private float rotationSpeed = 0.2f;
     private float initialRotationFingerPosX;
+
+    private Transform objectTransform;
+
+    private void Start()
+    {
+        objectTransform = this.transform;
+    }
 
     private void Update()
     {
@@ -20,7 +26,7 @@ public class ObjectInteraction : MonoBehaviour
             if (touch1.phase == TouchPhase.Began || touch2.phase == TouchPhase.Began)
             {
                 initialDistance = Vector2.Distance(touch1.position, touch2.position);
-                initialScale = transform.localScale;
+                initialScale = objectTransform.localScale;
             }
             else if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
             {
@@ -29,7 +35,7 @@ public class ObjectInteraction : MonoBehaviour
                     return;
 
                 float scaleFactor = currentDistance / initialDistance;
-                transform.localScale = initialScale * scaleFactor;
+                objectTransform.localScale = initialScale * scaleFactor;
             }
         }
         else if (Input.touchCount == 1)
@@ -44,11 +50,9 @@ public class ObjectInteraction : MonoBehaviour
             {
                 float deltaX = touch.position.x - initialRotationFingerPosX;
 
-                Vector3 currentRotation = transform.eulerAngles;
-
-                float newRotationY = currentRotation.y - deltaX * rotationSpeed;
-
-                transform.localEulerAngles = new Vector3(currentRotation.x, newRotationY, currentRotation.z);
+                
+                Quaternion rotation = Quaternion.Euler(0, deltaX * rotationSpeed, 0);
+                objectTransform.rotation = objectTransform.rotation * rotation;
 
                 initialRotationFingerPosX = touch.position.x;
             }
