@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;  // Für den Szenenwechsel
+using TMPro;  // Import für TextMesh Pro
 
 public class RecipeChecker : MonoBehaviour
 {
-    public Text feedbackText;  // UI-Text für das Feedback
+    public TextMeshProUGUI feedbackText;  // Verwende TextMeshProUGUI für TextMesh Pro
     private InventoryManager inventoryManager;  // Referenz auf den InventoryManager
 
     // Rezept-Daten
