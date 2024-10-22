@@ -5,6 +5,6 @@ public class ChangeSceneMinigame : MonoBehaviour
 {
     public void ChangeToNextScene()
     {
-        SceneManager.LoadScene("13_1minigame_ladenszene");  
+        SceneManager.LoadScene("13Minigame_ladenszene");  
     }
 }
