@@ -45,7 +45,7 @@ EditorBuildSettings:
     path: Assets/01_Scenes/12AutoScene 1.unity
     guid: 2f54dac36e317744b93e90d7e944e5f6
   - enabled: 1
-    path: Assets/01_Scenes/13Minigame_einkaufen.unity
+    path: Assets/01_Scenes/13minigame_einkaufen.unity
     guid: d0d44ec1de30e3b41a2dc323a72da0d6
   - enabled: 1
     path: Assets/01_Scenes/13Minigame_ladenszene.unity
