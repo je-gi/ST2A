@@ -155,10 +155,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1981180667}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -108, y: -31}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -134, y: -31}
+  m_SizeDelta: {x: 1098, y: 426}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541186
 MonoBehaviour:
@@ -1914,7 +1914,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.92098063, y: 1.7241088, z: 0.82758534}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1484661335}
   - {fileID: 330704466}
@@ -1931,8 +1931,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44, y: 13}
-  m_SizeDelta: {x: 1366.5796, y: 306.4}
+  m_AnchoredPosition: {x: -0.0000667572, y: 13}
+  m_SizeDelta: {x: 1395.76, y: 306.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934591873
 MonoBehaviour:
@@ -2052,8 +2052,8 @@ Camera:
   m_GameObject: {fileID: 961739749}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.20784315, g: 0.59607846, b: 0.8588236, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2613,8 +2613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.054991, y: -0.00013246869}
-  m_SizeDelta: {x: 914.14, y: 0}
+  m_AnchoredPosition: {x: -0.054991, y: -0.00006854293}
+  m_SizeDelta: {x: 964.937, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1452703669
 MonoBehaviour:
@@ -3692,7 +3692,7 @@ MonoBehaviour:
   m_Horizontal: 1
   m_Vertical: 0
   m_MovementType: 1
-  m_Elasticity: 0.5
+  m_Elasticity: 0
   m_Inertia: 0
   m_DecelerationRate: 0.59
   m_ScrollSensitivity: 1
