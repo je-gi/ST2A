@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/01_Scenes/00_StartScene.unity
     guid: af18511a566da0a4cb31a8a4cbdddeeb
   - enabled: 1
-    path: Assets/01_Scenes/01FarmerAR.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/01_Scenes/02FieldScene.unity
     guid: 38340752fddfd6e42ba6c3736b47a4b1
   - enabled: 1
@@ -26,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01_Scenes/06SceneCompletion.unity
     guid: db97736b27ad56740a30ed21add32ba9
-  - enabled: 1
-    path: Assets/01_Scenes/07IndustryAR.unity
-    guid: 44ef460129ec1604484794bde76f9a7a
   - enabled: 1
     path: Assets/01_Scenes/08PackageScene 1.unity
     guid: 97bbbb8830c6f3749b8981504d8dbe6b
@@ -56,9 +50,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01_Scenes/14SceneCompletion.unity
     guid: e659286ffce6f6f4abec506fd088a31a
-  - enabled: 1
-    path: Assets/01_Scenes/15ConsumerAR.unity
-    guid: ecfb3fb430b52894c999ccbb0b1b789a
   - enabled: 1
     path: Assets/01_Scenes/16FridgeScene.unity
     guid: 3e6e99fb090a8b443a82146f8371d814
